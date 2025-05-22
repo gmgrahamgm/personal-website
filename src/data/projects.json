@@ -1,1 +1,27 @@
-[]
+[
+  {
+    "id": "project-a",
+    "title": "Project A",
+    "blurb": "A short description of Project A",
+    "description": "<p>This is a longer, more detailed description of <strong>Project A</strong>. It can include HTML tags for emphasis, lists, etc.</p>",
+    "date": "November 2026",
+    "thumbnail": "project-a/project-a-thumbnail.png",
+    "images": [
+      "project-a/project-a-1.png",
+      "project-a/project-a-2.png"
+    ]
+  },
+  {
+    "id": "project-b",
+    "title": "Project B",
+    "blurb": "A short description of Project B",
+    "description": "<p>This is a longer, more detailed description of <em>Project B</em>. It can include HTML tags and multiple paragraphs.</p>",
+    "date": "December 2026",
+    "thumbnail": "project-b/project-b-thumbnail.png",
+    "images": [
+      "project-b/project-b-1.png",
+      "project-b/project-b-2.png",
+      "project-b/project-b-3.png"
+    ]
+  }
+]
