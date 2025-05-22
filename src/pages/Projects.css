@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+/* Page wrapper */
+.projects-page {
+  @apply flex flex-col items-center py-8 px-4;
+}
+
+/* Navigator */
+.navigator {
+  @apply flex items-center space-x-4 mb-8;
+}
+.nav-arrow {
+  @apply px-3 py-1 bg-gray-300 rounded hover:bg-gray-400;
+}
+.nav-dropdown {
+  @apply px-3 py-1 border border-gray-400 rounded;
+}
+
+/* Project display */
+.project-display {
+  @apply w-full max-w-3xl text-center mb-8;
+}
+.project-title {
+  @apply text-3xl font-bold;
+}
+.project-date {
+  @apply text-sm text-gray-600 mb-4;
+}
+.project-details {
+  @apply flex flex-col md:flex-row items-start justify-center;
+}
+.project-thumb {
+  @apply hidden md:block w-32 h-32 object-cover mr-4 mb-4 md:mb-0;
+}
+.project-desc {
+  @apply text-left;
+}
+
+/* Carousel */
+.carousel {
+  @apply flex items-center space-x-4;
+}
+.carousel-arrow {
+  @apply px-3 py-1 bg-gray-300 rounded hover:bg-gray-400;
+}
+.carousel-img {
+  @apply w-64 h-auto object-contain;
+}
