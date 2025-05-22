@@ -95,18 +95,37 @@ export default function Projects() {
 
       {/* Carousel */}
       {imgs.length > 0 && currentImgUrl && (
-        <div className="carousel my-8">
-          <button onClick={prevImage} className="carousel-arrow">
-            ←
-          </button>
-          <img
-            src={currentImgUrl}
-            alt={`${current.title} screenshot ${imageIndex + 1}`}
-            className="carousel-img"
-          />
-          <button onClick={nextImage} className="carousel-arrow">
-            →
-          </button>
+        <div className="my-8 w-full max-w-3xl">
+          {/* mobile: image above, arrows below */}
+          <div className="md:hidden flex flex-col items-center">
+            <img
+              src={currentImgUrl}
+              alt={`${current.title} screenshot ${imageIndex + 1}`}
+              className="carousel-img"
+            />
+            <div className="flex space-x-4 mt-4">
+              <button onClick={prevImage} className="carousel-arrow">
+                ←
+              </button>
+              <button onClick={nextImage} className="carousel-arrow">
+                →
+              </button>
+            </div>
+          </div>
+          {/* desktop: arrows left/right of image */}
+          <div className="hidden md:flex justify-center items-center space-x-4">
+            <button onClick={prevImage} className="carousel-arrow">
+              ←
+            </button>
+            <img
+              src={currentImgUrl}
+              alt={`${current.title} screenshot ${imageIndex + 1}`}
+              className="carousel-img"
+            />
+            <button onClick={nextImage} className="carousel-arrow">
+              →
+            </button>
+          </div>
         </div>
       )}
     </div>
