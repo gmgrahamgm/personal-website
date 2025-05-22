@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+.contact-page {
+  @apply max-w-4xl mx-auto py-8 px-4;
+}
+
+.contact-heading {
+  @apply text-3xl font-bold mb-6;
+  text-align: left;
+}
+
+.contact-list {
+  @apply list-none mb-8 space-y-2;
+}
+.contact-list li {
+  @apply text-base;
+}
+.contact-list a {
+  @apply text-blue-600 hover:underline;
+}
+
+.about-heading {
+  @apply text-2xl font-semibold mb-4;
+  text-align: left;
+}
+
+.about-text {
+  @apply text-base;
+  text-align: left;
+}
