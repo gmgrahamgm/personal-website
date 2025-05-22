@@ -21,7 +21,7 @@
   @apply text-7xl md:text-8xl font-bold mb-4;
 }
 .intro-text {
-  @apply text-2xl md:text-3xl;
+  @apply text-2xl md:text-3xl max-w-full md:max-w-7xl text-left;
 }
 
 /* Projects Preview */
