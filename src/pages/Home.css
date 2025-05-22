@@ -1,15 +1,17 @@
 @import "tailwindcss";
 
+/* Intro Section */
 .intro-section {
   @apply flex flex-col md:flex-row items-center py-8;
 }
 .intro-left {
-  @apply w-full md:w-1/2 flex justify-center items-center bg-gray-200 h-48 md:h-64 mb-4 md:mb-0;
+  @apply hidden md:flex md:w-1/2 justify-center items-center bg-gray-200 h-48 md:h-64 mb-4 md:mb-0;
 }
 .intro-right {
   @apply w-full md:w-1/2 p-4;
 }
 
+/* Projects Preview Section */
 .project-section {
   @apply flex flex-col md:flex-row py-8;
 }
@@ -17,13 +19,13 @@
   @apply w-full md:w-1/4 p-4;
 }
 .right-project-display {
-  @apply w-full md:w-3/4 p-4 bg-gray-200;
+  @apply hidden md:block md:w-full md:w-3/4 p-4 bg-gray-200;
 }
 
+/* Button & Thumbnail Placeholders */
 .btn-placeholder {
   @apply w-full text-left p-2 bg-gray-300 rounded;
 }
-
 .thumbnail-placeholder {
   @apply w-24 h-24 bg-gray-300 flex justify-center items-center mr-4;
 }
