@@ -26,11 +26,21 @@
 .project-date {
   @apply text-sm text-gray-600 mb-4;
 }
+
+/* DESCRIPTION WRAP LAYOUT */
+/* 1) remove flex, allow text flow */
 .project-details {
-  @apply flex flex-col md:flex-row items-start justify-center;
+  @apply text-left;
 }
+/* 2) clearfix for floated children */
+.project-details::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* 3) float thumbnail right on md+, hide on small */
 .project-thumb {
-  @apply hidden md:block w-32 h-32 object-cover mr-4 mb-4 md:mb-0;
+  @apply hidden md:block w-32 h-32 object-cover mb-4 md:float-right md:ml-4;
 }
 .project-desc {
   @apply text-left;
