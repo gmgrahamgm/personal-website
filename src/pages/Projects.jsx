@@ -3,40 +3,51 @@ import { useLocation } from "react-router-dom";
 import projects from "../data/projects.json";
 import "./Projects.css";
 
-// 1) Bundle up all image assets under src/assets
 const assetMap = import.meta.glob("../assets/**/*.{png,jpg,jpeg,svg}", {
   eager: true,
   as: "url",
 });
 
 export default function Projects() {
-  const { state } = useLocation();
-  const [projectIndex, setProjectIndex] = useState(state?.projectIndex ?? 0);
+  const location = useLocation();
+  const hashId = location.hash.slice(1); // e.g. "project-a"
+  const initialFromHash = projects.findIndex((p) => p.id === hashId);
+  // fall back to 0 if hash not found
+  const [projectIndex, setProjectIndex] = useState(
+    initialFromHash >= 0 ? initialFromHash : 0
+  );
   const [imageIndex, setImageIndex] = useState(0);
-  const current = projects[projectIndex] || {};
-  const imgs = current.images || [];
 
+  // whenever projectIndex changes, reset image and update URL hash
   useEffect(() => {
     setImageIndex(0);
+    const id = projects[projectIndex].id;
+    if (window.location.hash.slice(1) !== id) {
+      window.location.hash = id;
+    }
   }, [projectIndex]);
 
-  const prevProject = () =>
+  const prevProject = () => {
     setProjectIndex((i) => (i - 1 + projects.length) % projects.length);
-  const nextProject = () => setProjectIndex((i) => (i + 1) % projects.length);
-
+  };
+  const nextProject = () => {
+    setProjectIndex((i) => (i + 1) % projects.length);
+  };
   const selectProject = (e) => {
     const idx = projects.findIndex((p) => p.id === e.target.value);
     if (idx >= 0) setProjectIndex(idx);
   };
 
+  const current = projects[projectIndex] || {};
+  const imgs = current.images || [];
+
   const prevImage = () =>
     setImageIndex((i) => (i - 1 + imgs.length) % imgs.length);
   const nextImage = () => setImageIndex((i) => (i + 1) % imgs.length);
 
-  // 2) Resolve URLs via assetMap
+  // asset lookups
   const thumbnailKey = `../assets/${current.thumbnail}`;
   const thumbnailUrl = assetMap[thumbnailKey];
-
   const currentImgKey = `../assets/${imgs[imageIndex]}`;
   const currentImgUrl = imgs.length ? assetMap[currentImgKey] : undefined;
 

@@ -18,8 +18,8 @@ export default function Home() {
   const thumbUrl = assetMap[thumbKey];
 
   const goToProject = (idx) => {
-    // pass the project index so Projects.jsx can pick it up
-    navigate("/projects", { state: { projectIndex: idx } });
+    const id = projects[idx].id;
+    navigate(`/projects#${id}`);
   };
 
   return (
