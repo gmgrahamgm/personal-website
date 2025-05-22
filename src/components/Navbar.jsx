@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { pathname } = useLocation();
-
   const links = [
     { to: "/home", label: "HOME" },
     { to: "/projects", label: "PROJECTS" },
@@ -20,11 +20,9 @@ export default function Navbar() {
         to={to}
         onClick={() => setMobileOpen(false)}
         className={`
-            block px-4 py-3
-            text-lg md:text-xl
-            ${isActive ? "font-bold opacity-100" : "font-normal opacity-50"}
-            hover:opacity-100
-            transition-opacity duration-200 ease-in-out
+          block px-4 py-3 text-lg md:text-xl
+          ${isActive ? "font-bold opacity-100" : "font-normal opacity-50"}
+          hover:opacity-100 transition-opacity duration-150
         `}
       >
         {label}
@@ -97,26 +95,34 @@ export default function Navbar() {
       </div>
 
       {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="md:hidden bg-[#F7F9F9] px-4 pb-4 space-y-2">
-          {links.map(renderLink)}
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setMobileOpen(false)}
-            className="
-              block px-4 py-3
-              text-lg
-              font-normal opacity-50
-              hover:opacity-100
-              transition-opacity duration-150
-            "
+      <AnimatePresence initial={false}>
+        {mobileOpen && (
+          <motion.div
+            key="mobile-menu"
+            className="md:hidden bg-[#F7F9F9] overflow-hidden"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            RESUME
-          </a>
-        </div>
-      )}
+            <div className="px-4 pb-4 space-y-2">
+              {links.map(renderLink)}
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="
+                  block px-4 py-3 text-lg font-normal opacity-50
+                  hover:opacity-100 transition-opacity duration-150
+                "
+              >
+                RESUME
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }
