@@ -1,58 +1,69 @@
 @import "tailwindcss";
 
-/* Page wrapper */
+/* Page wrapper: center content in a max-width container */
 .projects-page {
-  @apply flex flex-col items-center py-8 px-4;
+  @apply w-full max-w-6xl mx-auto flex flex-col items-center px-4;
 }
 
 /* Navigator */
 .navigator {
-  @apply flex items-center space-x-4 mb-8;
+  @apply flex items-center space-x-8 mb-8
+         bg-[#E4E4E4] px-4 py-2 rounded-full;
 }
+/* Project nav arrows & dropdown */
 .nav-arrow {
-  @apply px-3 py-1 bg-gray-300 rounded hover:bg-gray-400;
+  @apply h-12 w-12 bg-white rounded-full
+         flex items-center justify-center
+         hover:bg-[#FCFCFC]
+         transition-colors duration-150;
 }
+.nav-arrow:hover {
+  cursor: pointer;
+}
+
 .nav-dropdown {
-  @apply px-3 py-1 border border-gray-400 rounded;
+  @apply appearance-none pr-12 pl-6 py-3 bg-white rounded-full
+         text-lg md:text-xl;
+}
+.nav-dropdown:hover {
+  cursor: pointer;
 }
 
 /* Project display */
 .project-display {
-  @apply w-full max-w-3xl text-center mb-8;
+  @apply w-full text-center mb-8;
 }
 .project-title {
-  @apply text-3xl font-bold;
+  @apply text-5xl md:text-6xl font-bold;
 }
 .project-date {
-  @apply text-sm text-gray-600 mb-4;
+  @apply text-base pt-2 md:text-lg text-gray-600 mb-4;
 }
 
 /* DESCRIPTION WRAP LAYOUT */
-/* 1) remove flex, allow text flow */
+/* (unchanged) */
 .project-details {
   @apply text-left;
 }
-/* 2) clearfix for floated children */
 .project-details::after {
   content: "";
   display: table;
   clear: both;
 }
-/* 3) float thumbnail right on md+, hide on small */
+/* Larger thumbnail */
 .project-thumb {
-  @apply hidden md:block w-32 h-32 object-cover mb-4 md:float-right md:ml-4;
+  @apply hidden md:block w-40 h-40 object-cover mb-4 md:float-right md:ml-4;
 }
 .project-desc {
-  @apply text-left;
+  @apply text-xl md:text-2xl;
 }
 
 /* Carousel */
-.carousel {
-  @apply flex items-center space-x-4;
+/* Mobile & desktop handled in JSX, just style the bits */
+.carousel-img {
+  @apply w-80 h-auto object-contain;
 }
 .carousel-arrow {
-  @apply px-3 py-1 bg-gray-300 rounded hover:bg-gray-400;
-}
-.carousel-img {
-  @apply w-64 h-auto object-contain;
+  @apply px-4 py-3 bg-[#E4E4E4] rounded-xl hover:bg-gray-300
+         text-lg md:text-xl transition-colors duration-150;
 }

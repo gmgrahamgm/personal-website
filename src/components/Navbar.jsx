@@ -103,7 +103,7 @@ export default function Navbar() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            transition={{ duration: 0.15, ease: "easeInOut" }}
           >
             <div className="px-4 pb-4 space-y-2">
               {links.map(renderLink)}
@@ -114,7 +114,7 @@ export default function Navbar() {
                 onClick={() => setMobileOpen(false)}
                 className="
                   block px-4 py-3 text-lg font-normal opacity-50
-                  hover:opacity-100 transition-opacity duration-150
+                  hover:opacity-100 transition-opacity duration-300
                 "
               >
                 RESUME
