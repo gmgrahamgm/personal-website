@@ -10,7 +10,6 @@ export default function Navbar() {
     { to: "/projects", label: "PROJECTS" },
     { to: "/skills", label: "SKILLS" },
     { to: "/contact", label: "CONTACT" },
-    { to: "/resume", label: "RESUME" },
   ];
 
   const renderLink = ({ to, label }) => {
@@ -33,9 +32,21 @@ export default function Navbar() {
 
   return (
     <nav className="bg-transparent">
-      <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div className="max-w-4xl mx-auto px-4 py-3 relative">
         {/* Desktop links */}
-        <div className="hidden md:flex space-x-6">{links.map(renderLink)}</div>
+        <div className="hidden md:flex justify-center space-x-6 items-center">
+          {links.map(renderLink)}
+
+          {/* Direct Resume link */}
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-3 py-2 font-normal opacity-50 hover:opacity-100"
+          >
+            RESUME
+          </a>
+        </div>
 
         {/* Mobile hamburger */}
         <button
@@ -79,8 +90,17 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-[#F7F9F9] px-4 pb-4">
+        <div className="md:hidden bg-[#F7F9F9] px-4 pb-4 space-y-1">
           {links.map(renderLink)}
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block px-3 py-2 font-normal opacity-50 hover:opacity-100"
+            onClick={() => setMobileOpen(false)}
+          >
+            RESUME
+          </a>
         </div>
       )}
     </nav>
