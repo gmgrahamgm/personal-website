@@ -1,14 +1,27 @@
 @import "tailwindcss";
 
-/* Introductory segment */
+/* Intro Section */
 .intro-section {
-  @apply flex flex-col md:flex-row items-center py-8;
+  @apply flex flex-col md:flex-row items-center py-0 md:space-x-8;
 }
 .intro-left {
-  @apply hidden md:flex md:w-1/2 justify-center items-center bg-gray-200 h-48 md:h-64 mb-4 md:mb-0;
+  @apply hidden md:flex justify-center items-center md:flex-shrink-0 pl-12 pr-12;
+}
+.intro-photo {
+  @apply object-cover h-80 md:h-[40rem] w-auto;
 }
 .intro-right {
-  @apply w-full md:w-1/2 p-4;
+  @apply w-full md:flex-1 p-4;
+}
+
+.intro-greeting {
+  @apply text-6xl md:text-7xl mb-2;
+}
+.intro-name {
+  @apply text-7xl md:text-8xl font-bold mb-4;
+}
+.intro-text {
+  @apply text-2xl md:text-3xl;
 }
 
 /* Projects Preview */
@@ -18,24 +31,42 @@
 .left-project-list {
   @apply w-full md:w-1/4 p-4;
 }
-.right-project-display {
-  @apply hidden md:block md:w-3/4 p-4 bg-gray-200;
+.projects-heading {
+  @apply text-5xl md:text-6xl font-bold mb-4;
 }
 
-/* Buttons */
+/* Buttons with SVG-arrow placeholder on right */
 .btn-project {
-  @apply w-full text-left p-2 bg-gray-300 rounded hover:bg-gray-400 mb-2 transition-colors duration-150;
+  @apply w-full flex justify-between items-center p-3 bg-transparent rounded-xl
+         hover:bg-[#E4E4E4] mb-3 transition-colors duration-150
+         text-xl md:text-2xl;
+}
+.btn-project:hover {
+  cursor: pointer;
 }
 
-/* Preview thumbnail */
-.thumbnail-preview {
-  @apply w-24 h-24 object-cover mr-4 mb-4;
+/* Preview Card */
+.right-project-display {
+  @apply hidden md:block md:w-3/4 p-6 bg-[#E4E4E4] rounded-xl;
 }
-
-/* Preview text */
 .preview-title {
-  @apply text-xl font-bold mb-2;
+  @apply text-5xl md:text-6xl font-bold mb-2;
+}
+.thumbnail-preview-large {
+  @apply w-32 h-32 object-cover mr-4 mb-4;
 }
 .preview-blurb {
-  @apply text-base;
+  @apply text-xl md:text-2xl;
+}
+
+/* Fade classes on the preview card */
+.right-project-display {
+  @apply hidden md:block md:w-3/4 p-6 bg-[#E4E4E4] rounded-xl
+         transition-opacity duration-300 opacity-100;
+}
+.fade-out {
+  @apply opacity-0;
+}
+.fade-in {
+  @apply opacity-100;
 }

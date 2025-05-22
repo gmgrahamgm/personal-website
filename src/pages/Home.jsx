@@ -6,16 +6,18 @@ import "./Home.css";
 // bundle all your src/assets images into a lookup map
 const assetMap = import.meta.glob("../assets/**/*.{png,jpg,jpeg,svg}", {
   eager: true,
-  as: "url",
+  query: "?url",
+  import: "default",
 });
 
 export default function Home() {
   const [previewIndex, setPreviewIndex] = useState(0);
   const navigate = useNavigate();
 
+  const photoUrl = assetMap["../assets/graham-sitting.png"];
+
   const preview = projects[previewIndex];
-  const thumbKey = `../assets/${preview.thumbnail}`;
-  const thumbUrl = assetMap[thumbKey];
+  const thumbUrl = assetMap[`../assets/${preview.thumbnail}`];
 
   const goToProject = (idx) => {
     const id = projects[idx].id;
@@ -24,26 +26,28 @@ export default function Home() {
 
   return (
     <div>
-      {/* Intro section stays the same */}
+      {/* Intro Section */}
       <section className="intro-section">
         <div className="intro-left">
-          <span className="placeholder-text">Your Photo</span>
+          {photoUrl && (
+            <img src={photoUrl} alt="Graham Dungan" className="intro-photo" />
+          )}
         </div>
         <div className="intro-right">
-          <h1 className="text-3xl font-bold mb-4">
-            Howdy, I’m <strong>Graham Dungan</strong>
-          </h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <h1 className="intro-greeting">Howdy, I'm</h1>
+          <h1 className="intro-name">Graham Dungan</h1>
+          <p className="intro-text">
+            A Junior Computer Science student at Texas A&M with a specialization
+            in Software Development and Security. Diligent, hardworking, and
+            looking to "make good things."
           </p>
         </div>
       </section>
 
-      {/* Projects preview */}
+      {/* Projects Preview */}
       <section className="project-section">
         <div className="left-project-list">
-          <h2 className="text-2xl font-bold mb-4">Projects</h2>
+          <h2 className="projects-heading">Projects</h2>
           {projects.map((p, idx) => (
             <button
               key={p.id}
@@ -51,7 +55,21 @@ export default function Home() {
               onMouseEnter={() => setPreviewIndex(idx)}
               onClick={() => goToProject(idx)}
             >
-              {p.title}
+              <span>{p.title}</span>
+              {/* right‐arrow SVG */}
+              <svg
+                className="h-5 w-5 flex-shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
             </button>
           ))}
         </div>
@@ -63,7 +81,7 @@ export default function Home() {
               <img
                 src={thumbUrl}
                 alt={`${preview.title} thumbnail`}
-                className="thumbnail-preview"
+                className="thumbnail-preview-large"
               />
             )}
             <p className="preview-blurb">{preview.blurb}</p>
