@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import projects from "../data/projects.json";
 import "./Projects.css";
 
@@ -9,7 +10,8 @@ const assetMap = import.meta.glob("../assets/**/*.{png,jpg,jpeg,svg}", {
 });
 
 export default function Projects() {
-  const [projectIndex, setProjectIndex] = useState(0);
+  const { state } = useLocation();
+  const [projectIndex, setProjectIndex] = useState(state?.projectIndex ?? 0);
   const [imageIndex, setImageIndex] = useState(0);
   const current = projects[projectIndex] || {};
   const imgs = current.images || [];
