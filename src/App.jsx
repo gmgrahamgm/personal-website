@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="min-h-screen bg-[#F7F9F9] text-[#3A3C3D]">
       <Navbar />
-      <main className="px-4 py-8">
+      <main className="px-4 py-8 fade-in">
         <Routes>
           <Route path="/" element={<Navigate to="/home" replace />} />
           <Route path="/home" element={<Home />} />

@@ -58,15 +58,3 @@
 .preview-blurb {
   @apply text-xl md:text-2xl;
 }
-
-/* Fade classes on the preview card */
-.right-project-display {
-  @apply hidden md:block md:w-3/4 p-6 bg-[#E4E4E4] rounded-xl
-         transition-opacity duration-300 opacity-100;
-}
-.fade-out {
-  @apply opacity-0;
-}
-.fade-in {
-  @apply opacity-100;
-}

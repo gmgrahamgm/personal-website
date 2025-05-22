@@ -37,7 +37,7 @@ export default function Home() {
           <h1 className="intro-greeting">Howdy, I'm</h1>
           <h1 className="intro-name">Graham Dungan</h1>
           <p className="intro-text">
-            A Junior Computer Science student at Texas A&M with a specialization
+            A Senior Computer Science student at Texas A&M with a specialization
             in Software Development and Security. Diligent, hardworking, and
             looking to "make good things."
           </p>
