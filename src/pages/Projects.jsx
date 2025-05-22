@@ -5,7 +5,8 @@ import "./Projects.css";
 
 const assetMap = import.meta.glob("../assets/**/*.{png,jpg,jpeg,svg}", {
   eager: true,
-  as: "url",
+  query: "?url",
+  import: "default",
 });
 
 export default function Projects() {
