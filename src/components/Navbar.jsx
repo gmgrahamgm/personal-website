@@ -38,7 +38,7 @@ export default function Navbar() {
           {links.map(renderLink)}
 
           <a
-            href="/grahamd_resume_2025.pdf"
+            href="./grahamd_resume_2025.pdf"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMobileOpen(false)}
@@ -108,7 +108,7 @@ export default function Navbar() {
             <div className="px-4 pb-4 space-y-2">
               {links.map(renderLink)}
               <a
-                href="/grahamd_resume_2025.pdf"
+                href="./grahamd_resume_2025.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileOpen(false)}
