@@ -1,5 +1,32 @@
 [
   {
+    "id": "project-sqlguesser",
+    "title": "SQL Guesser",
+    "blurb": "As part of the final project in CSCE 413 at Texas A&M, my team and I created a tool that can perform a blind SQLi using binary search to access information within a vulnerable MySQL DBMS.",
+    "description": "<p>CSCE 413, Software Security, is a hands-on security class that covered the fundamentals of security related concepts for software development. Besides the many PoC's that we did, alongside studies of existing viruses, the final project was to find a zero-day exploit of an existing application or website.<br><br>Our team found many rudementary stored and reflected XSS vulnerabilities across many websites via Google Dorks, however, we only found a few websites vulnerable to SQLi. Of these websites, we found one that errored when a malformed query was input. Leveraging this, we created a tool called SQL Guesser. This tool had multiple modes for guessing database, table, and column names as well as row entries. The tool would 'guess' by querying if the nth character of some database element was higher or lower than a certain ASCII value (binary search). Since the vulnerable website did not have rate limiting or really any security checks, out team was able to map out their entire database.</p>",
+    "date": "January 2025 - May 2025",
+    "thumbnail": "project-sqlguesser/thumb-sqlguesser.png",
+    "images": [
+      "project-sqlguesser/sqlguesser-presentation.png",
+      "project-sqlguesser/sqlguesser-report.png"
+    ]
+  },
+  {
+    "id": "project-pandapos",
+    "title": "PandaPOS",
+    "blurb": "I took CSCE 331, Foundations of Software Engineering, at Texas A&M. This class contained three projects, two of which were aimed towards making a fully functional POS system for Panda Express.",
+    "description": "<p>Texas A&M offers CSE 331, Foundations of Software Engineering. While I was familiar with most of the technologies that we used within this class (Java, MySQL, Python, React), I had never worked in such a large team on such an elaborate project. The first project of the class was to make a personal website, and the remaining two projects were to make a functional POS for Panda Express in a team of 6.<br><br>The first PandaPOS project was directed using Waterfall. Our team, named RevFault, designed our MySQL database and made a desktop application with Java Swing. This application had two 'views'; Manager and Employee. The Manager view offered the ability to view store statistics, keep track of inventory, manage employees, and edit menu items. The Employee view offered the ability for any employee on a POS to input orders for customers.<br><br>The second POS Panda Express project was done via a webapp and offered three new views- a Menu, Kiosk, and Kitchen views, all somewhat self-explanatory. This project was directed via Scrum.<br><br>This class was really a trial by fire, but I learned a lot in the realm of teamwork and project management. The final web-based project ended with separate formal and technical presentations and demos.</p>",
+    "date": "September 2024 - December 2024",
+    "thumbnail": "project-pandapos/thumb_panda.png",
+    "images": [
+      "project-pandapos/pandapos-order.png",
+      "project-pandapos/pandapos-manager.png",
+      "project-pandapos/pandapos-menu.png",
+      "project-pandapos/pandapos-dbuml.png",
+      "project-pandapos/pandapos_gui.png"
+    ]
+  },
+  {
     "id": "project-kavtools",
     "title": "KavTools",
     "blurb": "The art and self-help communities I associate myself with want tools to make learning and habit-tracking easier. Given that I needed more experience with web development, I decided to make tools for the communities that I associate myself with.",
@@ -54,7 +81,8 @@
     "date": "July 2023",
     "thumbnail": "project-tolltext/thumb_tolltext.png",
     "images": [
-      "project-tolltext/toll_notes.png"
+      "project-tolltext/toll_notes.png",
+      "project-tolltext/toll_screenshot.png"
     ]
   },
   {

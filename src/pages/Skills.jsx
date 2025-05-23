@@ -41,8 +41,8 @@ export default function Skills() {
     <div className="skills-page">
       <h1 className="skills-heading">Skills</h1>
       <p className="skills-intro">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        Here is a collection of concepts, languages, and technologies that I
+        have encountered and/or learned through personal projects and school.
       </p>
 
       {/* Courses Table */}

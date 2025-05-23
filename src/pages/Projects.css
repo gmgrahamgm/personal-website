@@ -7,13 +7,19 @@
 
 /* navigator */
 .navigator {
-  @apply flex items-center space-x-6 mb-8 bg-[#E4E4E4] px-4 py-2 rounded-full;
+  @apply flex items-center space-x-6 mb-8
+         bg-[#E4E4E4] px-4 py-2 rounded-full;
 }
 .nav-arrow {
-  @apply h-12 w-12 bg-white rounded-full flex items-center justify-center hover:bg-[#FCFCFC] transition-colors duration-150;
+  @apply h-12 w-12 bg-white rounded-full
+         flex items-center justify-center
+         hover:bg-[#FCFCFC]
+         transition-colors duration-150;
 }
 .nav-dropdown {
-  @apply appearance-none pr-10 pl-6 py-3 bg-white rounded-full text-lg md:text-xl;
+  @apply appearance-none pr-10 pl-6 py-3
+         bg-white rounded-full
+         text-lg md:text-xl;
 }
 
 /* project display */
@@ -42,19 +48,20 @@
 }
 
 /* carousel */
-.carousel-img {
-  @apply w-full max-w-md md:max-w-2xl h-auto object-contain rounded-xl;
+.carousel {
+  @apply bg-white rounded-xl p-4;
 }
+/* large click area: square on mobile, full height on desktop */
 .carousel-btn-large {
-  @apply h-16 w-16 bg-transparent flex items-center justify-center;
+  @apply w-16 bg-transparent flex items-center justify-center
+         h-16 md:h-full;
 }
-.carousel-btn-large.group:hover {
-  cursor: pointer;
-}
-
+/* circle inside */
 .carousel-btn-circle {
-  @apply h-12 w-12 bg-transparent rounded-full flex items-center justify-center transition-colors duration-150;
+  @apply h-12 w-12 bg-white rounded-full flex items-center justify-center
+         transition-colors duration-150;
 }
+/* hover tint */
 .carousel-btn-large.group:hover .carousel-btn-circle {
   @apply bg-[#E4E4E4];
 }

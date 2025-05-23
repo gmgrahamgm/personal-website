@@ -41,7 +41,7 @@
   @apply w-full flex justify-between items-center p-3
          bg-transparent rounded-xl hover:bg-[#E4E4E4]
          mb-1 transition-colors duration-150
-         text-xl md:text-2xl;
+         text-xl md:text-2xl text-left;
 }
 .btn-project:hover {
   cursor: pointer;
@@ -49,7 +49,7 @@
 
 /* Preview Card */
 .right-project-display {
-  @apply hidden md:block md:w-3/4 p-6 bg-[#E4E4E4] rounded-xl max-w-[72rem];
+  @apply hidden md:block md:w-3/4 p-6 bg-[#E4E4E4] rounded-xl max-w-[72rem] max-h-[24rem];
 }
 .preview-title {
   @apply text-5xl md:text-6xl font-bold mb-4;

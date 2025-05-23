@@ -32,7 +32,7 @@ export default function Navbar() {
 
   return (
     <nav>
-      <div className="max-w-4xl mx-auto px-4 py-3 relative">
+      <div className="max-w-4xl mx-auto p-4 relative">
         {/* Desktop */}
         <div className="hidden md:flex justify-center space-x-8 items-center">
           {links.map(renderLink)}

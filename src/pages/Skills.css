@@ -18,7 +18,7 @@
 }
 
 .skills-table {
-  @apply w-full table-auto border-collapse bg-white shadow overflow-hidden;
+  @apply w-full table-auto border-collapse bg-white overflow-hidden;
 }
 
 .skills-table th,

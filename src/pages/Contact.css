@@ -23,5 +23,5 @@
 }
 
 .about-text {
-  @apply text-lg md:text-xl bg-white p-6 rounded-lg shadow text-left;
+  @apply text-lg md:text-xl bg-white p-6 rounded-lg text-left;
 }

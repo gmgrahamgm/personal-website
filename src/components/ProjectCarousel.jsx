@@ -10,13 +10,13 @@ const ProjectCarousel = ({
   if (!imgs.length || !currentImgUrl) return null;
 
   return (
-    <div className="my-8 w-full max-w-3xl mx-auto">
+    <div className="my-8 w-full max-w-4xl mx-auto carousel">
       {/* mobile */}
       <div className="md:hidden flex flex-col items-center">
         <img
           src={currentImgUrl}
           alt={`Screenshot ${imageIndex + 1}`}
-          className="carousel-img"
+          className="w-full max-w-md md:max-w-4xl object-contain rounded-xl border border-gray-500 h-64 md:h-auto"
         />
         <div className="flex space-x-4 mt-4">
           <button onClick={prevImage} className="carousel-btn-large group">
@@ -80,7 +80,7 @@ const ProjectCarousel = ({
           <img
             src={currentImgUrl}
             alt={`Screenshot ${imageIndex + 1}`}
-            className="max-h-full max-w-full object-contain rounded-xl"
+            className="max-h-full max-w-full object-contain rounded-xl border border-gray-500"
           />
         </div>
 
