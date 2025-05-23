@@ -1,35 +1,22 @@
 @import "tailwindcss";
 
-/* Page wrapper: center content in a max-width container */
+/* wrapper */
 .projects-page {
   @apply w-full max-w-6xl mx-auto flex flex-col items-center px-4;
 }
 
-/* Navigator */
+/* navigator */
 .navigator {
-  @apply flex items-center space-x-8 mb-8
-         bg-[#E4E4E4] px-4 py-2 rounded-full;
+  @apply flex items-center space-x-8 mb-8 bg-[#E4E4E4] px-4 py-2 rounded-full;
 }
-/* Project nav arrows & dropdown */
 .nav-arrow {
-  @apply h-12 w-12 bg-white rounded-full
-         flex items-center justify-center
-         hover:bg-[#FCFCFC]
-         transition-colors duration-150;
+  @apply h-12 w-12 bg-white rounded-full flex items-center justify-center hover:bg-[#FCFCFC] transition-colors duration-150;
 }
-.nav-arrow:hover {
-  cursor: pointer;
-}
-
 .nav-dropdown {
-  @apply appearance-none pr-12 pl-6 py-3 bg-white rounded-full
-         text-lg md:text-xl;
-}
-.nav-dropdown:hover {
-  cursor: pointer;
+  @apply appearance-none pr-12 pl-6 py-3 bg-white rounded-full text-lg md:text-xl;
 }
 
-/* Project display */
+/* project display */
 .project-display {
   @apply w-full text-center mb-8;
 }
@@ -37,11 +24,8 @@
   @apply text-5xl md:text-6xl font-bold;
 }
 .project-date {
-  @apply text-base pt-2 md:text-lg text-gray-600 mb-4;
+  @apply text-base md:text-lg text-gray-600 mb-4;
 }
-
-/* DESCRIPTION WRAP LAYOUT */
-/* (unchanged) */
 .project-details {
   @apply text-left;
 }
@@ -50,7 +34,6 @@
   display: table;
   clear: both;
 }
-/* Larger thumbnail */
 .project-thumb {
   @apply hidden md:block w-40 h-40 object-cover mb-4 md:float-right md:ml-4;
 }
@@ -58,12 +41,20 @@
   @apply text-xl md:text-2xl;
 }
 
-/* Carousel */
-/* Mobile & desktop handled in JSX, just style the bits */
+/* carousel */
 .carousel-img {
-  @apply w-80 h-auto object-contain;
+  @apply w-full max-w-md md:max-w-2xl h-auto object-contain;
 }
-.carousel-arrow {
-  @apply px-4 py-3 bg-[#E4E4E4] rounded-xl hover:bg-gray-300
-         text-lg md:text-xl transition-colors duration-150;
+.carousel-btn-large {
+  @apply h-16 w-16 bg-transparent flex items-center justify-center;
+}
+.carousel-btn-large.group:hover {
+  cursor: pointer;
+}
+
+.carousel-btn-circle {
+  @apply h-12 w-12 bg-transparent rounded-full flex items-center justify-center transition-colors duration-150;
+}
+.carousel-btn-large.group:hover .carousel-btn-circle {
+  @apply bg-[#E4E4E4];
 }
