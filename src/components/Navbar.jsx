@@ -38,7 +38,7 @@ export default function Navbar() {
           {links.map(renderLink)}
 
           <a
-            href="/resume.pdf"
+            href="/grahamd_resume_2025.pdf"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMobileOpen(false)}
