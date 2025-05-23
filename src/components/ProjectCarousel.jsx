@@ -10,7 +10,7 @@ const ProjectCarousel = ({
   if (!imgs.length || !currentImgUrl) return null;
 
   return (
-    <div className="my-8 w-full max-w-4xl mx-auto carousel">
+    <div className="w-full max-w-4xl mx-auto carousel">
       {/* mobile */}
       <div className="md:hidden flex flex-col items-center">
         <img

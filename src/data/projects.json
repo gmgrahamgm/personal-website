@@ -2,7 +2,7 @@
   {
     "id": "project-sqlguesser",
     "title": "SQL Guesser",
-    "blurb": "As part of the final project in CSCE 413 at Texas A&M, my team and I created a tool that can perform a blind SQLi using binary search to access information within a vulnerable MySQL DBMS.",
+    "blurb": "As part of the final project in CSCE 413, Software Security at Texas A&M, my team and I created a tool that can perform a blind SQLi using binary search to access information within a vulnerable MySQL DBMS.",
     "description": "<p>CSCE 413, Software Security, is a hands-on security class that covered the fundamentals of security related concepts for software development. Besides the many PoC's that we did, alongside studies of existing viruses, the final project was to find a zero-day exploit of an existing application or website.<br><br>Our team found many rudementary stored and reflected XSS vulnerabilities across many websites via Google Dorks, however, we only found a few websites vulnerable to SQLi. Of these websites, we found one that errored when a malformed query was input. Leveraging this, we created a tool called SQL Guesser. This tool had multiple modes for guessing database, table, and column names as well as row entries. The tool would 'guess' by querying if the nth character of some database element was higher or lower than a certain ASCII value (binary search). Since the vulnerable website did not have rate limiting or really any security checks, out team was able to map out their entire database.</p>",
     "date": "January 2025 - May 2025",
     "thumbnail": "project-sqlguesser/thumb-sqlguesser.png",
@@ -10,6 +10,145 @@
       "project-sqlguesser/sqlguesser-presentation.png",
       "project-sqlguesser/sqlguesser-report.png"
     ]
+  },
+  {
+    "id": "project-securitypocs",
+    "title": "Security PoCs",
+    "blurb": "As part of CSCE 413, Software Security at Texas A&M, each student accomplished approximately 2-3 PoCs relating to various security concepts every week, including some short essays on popular viruses and vulnerabilities. These PoCs include, but are not limited to, OWASP top 10, dorking, SQLi and XSS, rudementary MITM, port knocking and network scanners, Android exploits, buffer overflows, Metasploit, password cracking, and popular tooling.",
+    "description": "<p>As part of CSCE 413, Software Security at Texas A&M, each student accomplished approximately 2-3 PoCs relating to various security concepts every week, including some short essays on popular viruses and vulnerabilities. These PoCs include, but are not limited to, OWASP top 10, Google Dorks, SQLi and XSS, rudementary MITM, network scanners and port knocking, Android vulnerabilities, buffer overflows, Metasploit, password cracking, and popular tooling.<br><br> What follows is a list of these PoC's and their respective reports. Actual demo scripts can be provided upon request.</p>",
+    "date": "January 2025 - May 2025",
+    "thumbnail": "project-securitypocs/thumb-securitypocs.png",
+    "reports": [
+      {
+        "label": "PoC Report - Finding OWASP Vulnerabilities w/ Google Dorks",
+        "url": "/reports/poc_owasp10_dorking.pdf"
+      },
+      {
+        "label": "PoC Report - Performing an Authentication Bypass",
+        "url": "/reports/poc_authentication_bypass.pdf"
+      },
+      {
+        "label": "PoC Report - Stored and Reflected XSS Injections",
+        "url": "/reports/poc_xss.pdf"
+      },
+      {
+        "label": "PoC Report - SQL Injections",
+        "url": "/reports/poc_sqli.pdf"
+      },
+      {
+        "label": "PoC Report - MITM Attacks",
+        "url": "/reports/poc_mitm.pdf"
+      },
+      {
+        "label": "PoC Report - Custom NMAP and Scanners",
+        "url": "/reports/poc_customnmap.pdf"
+      },
+      {
+        "label": "PoC Report - Port Knocking",
+        "url": "/reports/poc_portknocking.pdf"
+      },
+      {
+        "label": "PoC Report - Honeypots",
+        "url": "/reports/poc_honeypots.pdf"
+      },
+      {
+        "label": "PoC Report - APKs and Android Vulnerabilities",
+        "url": "/reports/poc_apks.pdf"
+      },
+      {
+        "label": "PoC Report - Buffer Overflows",
+        "url": "/reports/poc_buffer_overflows.pdf"
+      },
+      {
+        "label": "PoC Report - Ret2Lib and Rop Chains",
+        "url": "/reports/poc_ret2lib.pdf"
+      },
+      {
+        "label": "PoC Report - Shellcode",
+        "url": "/reports/poc_shellcoding.pdf"
+      },
+      {
+        "label": "PoC Report - Metasploit Basics",
+        "url": "/reports/poc_metasploit.pdf"
+      },
+      {
+        "label": "PoC Report - Password Cracking",
+        "url": "/reports/poc_password_cracking.pdf"
+      },
+      {
+        "label": "PoC Report - RNGs",
+        "url": "/reports/poc_rngs.pdf"
+      },
+      {
+        "label": "PoC Report - Static Analysis Tools",
+        "url": "/reports/poc_static_analysis.pdf"
+      },
+      {
+        "label": "PoC Report - Fuzzing",
+        "url": "/reports/poc_fuzzing.pdf"
+      },
+      {
+        "label": "PoC Report - Symbolic Execution",
+        "url": "/reports/poc_symbolic_execution.pdf"
+      },
+      {
+        "label": "PoC Report - Strace",
+        "url": "/reports/poc_strace.pdf"
+      },
+      {
+        "label": "PoC Report - Ltrace",
+        "url": "/reports/poc_ltrace.pdf"
+      },
+      {
+        "label": "PoC Report - Custom GDB",
+        "url": "/reports/poc_gdb.pdf"
+      },
+      {
+        "label": "PoC Report - Ptrace",
+        "url": "/reports/poc_ptrace.pdf"
+      },
+      {
+        "label": "PoC Report - Rootkits",
+        "url": "/reports/poc_rootkits.pdf"
+      },
+      {
+        "label": "Self Study - DirtyCow",
+        "url": "/reports/selfstudy_dirtycow.pdf"
+      },
+      {
+        "label": "Self Study - Eternal Blue",
+        "url": "/reports/selfstudy_eternalblue.pdf"
+      },
+      {
+        "label": "Self Study - GoToFail",
+        "url": "/reports/selfstudy_gotofail.pdf"
+      },
+      {
+        "label": "Self Study - Heartbleed",
+        "url": "/reports/selfstudy_heartbleed.pdf"
+      },
+      {
+        "label": "Self Study - Meltdown",
+        "url": "/reports/selfstudy_meltdown.pdf"
+      },
+      {
+        "label": "Self Study - PingOfDeath",
+        "url": "/reports/selfstudy_pingofdeath.pdf"
+      },
+      {
+        "label": "Self Study - ShellShock",
+        "url": "/reports/selfstudy_shellshock.pdf"
+      },
+      {
+        "label": "Self Study - Spectre",
+        "url": "/reports/selfstudy_spectre.pdf"
+      },
+      {
+        "label": "Self Study - WannaCry",
+        "url": "/reports/selfstudy_wannacry.pdf"
+      }
+    ],
+    "images": []
   },
   {
     "id": "project-pandapos",

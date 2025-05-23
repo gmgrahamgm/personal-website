@@ -83,15 +83,31 @@ export default function Projects() {
                 dangerouslySetInnerHTML={{ __html: current.description }}
               />
             </div>
+            {current.reports && current.reports.length > 0 && (
+              <div className="report-section">
+                <h4 className="report-heading">Proof-of-Concept Reports</h4>
+                <ul className="report-list">
+                  {current.reports.map((r, idx) => (
+                    <li key={idx} className="report-item">
+                      <a href={r.url} target="_blank" rel="noopener noreferrer">
+                        {r.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
 
-          <ProjectCarousel
-            imgs={imgs}
-            imageIndex={imageIndex}
-            currentImgUrl={currentImgUrl}
-            prevImage={prevImage}
-            nextImage={nextImage}
-          />
+          {imgs.length > 0 && (
+            <ProjectCarousel
+              imgs={imgs}
+              imageIndex={imageIndex}
+              currentImgUrl={currentImgUrl}
+              prevImage={prevImage}
+              nextImage={nextImage}
+            />
+          )}
         </motion.div>
       </AnimatePresence>
     </div>
