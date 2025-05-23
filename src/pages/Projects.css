@@ -21,10 +21,10 @@
   @apply w-full text-center mb-8;
 }
 .project-title {
-  @apply text-5xl md:text-6xl font-bold;
+  @apply text-5xl md:text-6xl font-bold pb-2;
 }
 .project-date {
-  @apply text-base md:text-lg text-gray-600 mb-4;
+  @apply text-base md:text-lg text-gray-600 pb-2;
 }
 .project-details {
   @apply text-left;
