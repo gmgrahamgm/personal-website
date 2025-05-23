@@ -2,7 +2,7 @@
 
 /* Intro Section */
 .intro-section {
-  @apply w-full max-w-[112rem] mx-auto flex flex-col md:flex-row items-center md:space-x-8 px-4 pb-8;
+  @apply w-full max-w-[112rem] mx-auto flex flex-col md:flex-row items-center md:space-x-8 px-4 pb-12;
 }
 .intro-left {
   /* no more pl-12/pr-12—just center within the max-width container */
@@ -49,13 +49,13 @@
 
 /* Preview Card */
 .right-project-display {
-  @apply hidden md:block md:w-3/4 p-6 bg-[#E4E4E4] rounded-xl;
+  @apply hidden md:block md:w-3/4 p-6 bg-[#E4E4E4] rounded-xl max-w-[72rem];
 }
 .preview-title {
   @apply text-5xl md:text-6xl font-bold mb-4;
 }
 .thumbnail-preview-large {
-  @apply w-32 h-32 object-cover mr-4 mb-4;
+  @apply w-64 h-64 object-cover mr-4 rounded-xl;
 }
 .preview-blurb {
   @apply text-xl md:text-2xl;

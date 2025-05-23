@@ -76,11 +76,13 @@ const ProjectCarousel = ({
           </div>
         </button>
 
-        <img
-          src={currentImgUrl}
-          alt={`Screenshot ${imageIndex + 1}`}
-          className="carousel-img"
-        />
+        <div className="relative h-[400px] w-full max-w-2xl flex items-center justify-center">
+          <img
+            src={currentImgUrl}
+            alt={`Screenshot ${imageIndex + 1}`}
+            className="max-h-full max-w-full object-contain rounded-xl"
+          />
+        </div>
 
         <button onClick={nextImage} className="carousel-btn-large group">
           <div className="carousel-btn-circle">
