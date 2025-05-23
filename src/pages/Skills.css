@@ -23,7 +23,7 @@
 
 .skills-table th,
 .skills-table td {
-  @apply border px-6 py-4 text-left;
+  @apply border p-2 text-left;
 }
 
 .skills-table th {

@@ -3,15 +3,37 @@ import "./Skills.css";
 
 export default function Skills() {
   const courses = [
-    { course: "Course A", concepts: "Lorem ipsum dolor sit" },
-    { course: "Course B", concepts: "Lorem ipsum dolor sit" },
-    { course: "Course C", concepts: "Lorem ipsum dolor sit" },
+    {
+      course: "Design and Analysis of Algorithms",
+      concepts: "Divide and Conquer, Greedy, DP, Graphs, Complexity",
+    },
+    {
+      course: "Software Security",
+      concepts:
+        "OWASP, Web Vulnerabilities, Software Vulnerabilities, Scanners and Tools",
+    },
+    {
+      course: "Applied Cryptography",
+      concepts:
+        "Public and Private Key Cryptography, Hashes, Block Ciphers, Quantum Computing, Post-Quantum Cryptography, Zero Knowledge Proofs",
+    },
+    {
+      course: "Foundations of Software Engineering",
+      concepts:
+        "Waterfall, Scrum, PostgreSQL, Python, Java, React, HTML, CSS, JavaScript",
+    },
+    {
+      course: "Intro to Computer Systems",
+      concepts:
+        "C, C++, File Descriptors, System Calls, Process API, Threading, Networks",
+    },
+    { course: "Database Systems", concepts: "MySQL, NoSQL" },
+    { course: "Program Design and Concepts", concepts: "C++" },
+    { course: "Data Structures and Algorithms", concepts: "C++, GDB" },
+    { course: "Programming Languages", concepts: "Java, Scheme" },
   ];
 
   const languages = [
-    "React",
-    "Vite",
-    "Three.js",
     "C",
     "C++",
     "Python",
