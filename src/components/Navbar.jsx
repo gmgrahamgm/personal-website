@@ -36,19 +36,11 @@ export default function Navbar() {
         {/* Desktop */}
         <div className="hidden md:flex justify-center space-x-8 items-center">
           {links.map(renderLink)}
-
           <a
             href="grahamd_resume_2025.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => setMobileOpen(false)}
-            className="
-              px-4 py-3
-              text-lg md:text-xl
-              font-normal opacity-50
-              hover:opacity-100
-              transition-opacity duration-150
-            "
+            className="px-4 py-3 text-lg md:text-xl opacity-50 hover:opacity-100 transition-opacity duration-150"
           >
             RESUME
           </a>
@@ -112,10 +104,7 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileOpen(false)}
-                className="
-                  block px-4 py-3 text-lg font-normal opacity-50
-                  hover:opacity-100 transition-opacity duration-300
-                "
+                className="block px-4 py-3 text-lg opacity-50 hover:opacity-100 transition-opacity duration-150"
               >
                 RESUME
               </a>
