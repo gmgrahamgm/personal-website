@@ -1,0 +1,74 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+import projectsOrder from '../data/projects-order.json';
+
+const allProjects = await getCollection('projects');
+
+// Sort projects based on the order defined in projects-order.json
+const projects = projectsOrder
+  .map(slug => allProjects.find(p => p.slug === slug))
+  .filter(Boolean); // Remove any undefined entries
+---
+
+<MainLayout title="Graham Dungan" description="A programmer.">
+  <div class="container mx-auto px-4 py-12">
+    <div class="max-w-4xl mx-auto">
+      <!-- Header Section -->
+      <div class="flex items-start gap-6 mb-12">
+        <img 
+          src="/src/assets/graham.jpeg" 
+          alt="Graham Dungan" 
+          class="hidden md:block w-40 h-40 rounded-lg object-cover flex-shrink-0"
+        />
+        <div>
+          <h1 class="text-4xl md:text-5xl font-bold mb-3">Graham Dungan</h1>
+          <p class="text-lg text-text/80 dark:text-text-dark/80">
+            A programmer.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Projects List -->
+      <div class="border-t border-b border-text/20 dark:border-text-dark/20">
+        {projects.map((project, index) => (
+          <a 
+            href={`/projects/${project.slug}`}
+            class={`group flex gap-4 p-4 hover:bg-accent/50 dark:hover:bg-accent-dark/50 transition-colors focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-text dark:focus-visible:outline-text-dark ${
+              index !== projects.length - 1 ? 'border-b border-text/10 dark:border-text-dark/10' : ''
+            }`}
+            aria-label={`View ${project.data.title} project`}
+          >
+            <img 
+              src={`/src/assets/${project.data.thumbnail}`}
+              alt={project.data.title}
+              class="w-24 h-24 rounded object-cover flex-shrink-0"
+            />
+            <div class="flex-1 min-w-0">
+              <h2 class="text-xl font-bold mb-1 group-hover:opacity-80 transition-opacity">
+                {project.data.title}
+              </h2>
+              <p class="text-sm text-text/60 dark:text-text-dark/60 mb-2">
+                {project.data.date}
+              </p>
+              <p class="text-sm line-clamp-2">
+                {project.data.summary}
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</MainLayout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
+
+

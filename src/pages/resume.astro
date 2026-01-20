@@ -1,0 +1,36 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Resume | Graham Dungan" description="Graham Dungan's resume">
+  <div class="container mx-auto px-4 py-12">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl md:text-5xl font-bold mb-8">Resume</h1>
+      
+      <div class="mb-8">
+        <a 
+          href="/Resume_Spring_2026.pdf" 
+          download
+          class="inline-flex items-center gap-2 px-6 py-3 bg-text dark:bg-text-dark text-background dark:text-background-dark rounded-lg hover:opacity-80 transition-opacity"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          Download Resume (PDF)
+        </a>
+      </div>
+      
+      <div class="bg-accent dark:bg-accent-dark rounded-lg p-4">
+        <embed 
+          src="/Resume_Spring_2026.pdf" 
+          type="application/pdf" 
+          class="w-full h-[800px] rounded"
+        />
+      </div>
+      
+      <p class="text-sm text-center mt-4 text-text/60 dark:text-text-dark/60">
+        If the PDF doesn't display, <a href="/Resume_Spring_2026.pdf" download class="underline hover:opacity-80">download it here</a>.
+      </p>
+    </div>
+  </div>
+</MainLayout>

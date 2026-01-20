@@ -1,0 +1,17 @@
+---
+title: "Rummikub Solver"
+summary: "My Dad beat me in a game of Rummikub, so I made an algorithm that finds the largest combination of pieces to play every turn."
+date: "June 2024"
+thumbnail: "project-rummikub/thumb_rummi.png"
+tags: ["python", "algorithms", "graph-theory"]
+images:
+  - "project-rummikub/rummi_notes.png"
+---
+
+Our parents will always be better than us at many things, but I draw the line on a niche board game that most people have never heard of.
+
+After recently finishing my Data Structures and Algorithms class, I had plenty of graph theory concepts floating around in my head. While too complex for what I am willing to write here, my heuristic solution to the game was to first create edges between all possible combinations of board tiles and then to systematically cull them (using a method much like Bellman-Ford) based on some abstract properties I defined, such as 'neediness.'
+
+Most of this program was designed on server notepads and used to-go bags during my free time at my summer restaurant job. While I definitely carved my own path with solving this algorithm, some of the logic was inspired by 'The Complexity of Rummikub Problems' by Jan N. van Rijn et al.
+
+The program was created using Python. The program accepts an input string of existing tiles (from both the board and your hand) and attempts to find the highest number of playable tiles while still considering tiles that have not been played yet.

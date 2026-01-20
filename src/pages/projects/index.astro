@@ -1,0 +1,60 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+import projectsOrder from '../../data/projects-order.json';
+
+const allProjects = await getCollection('projects');
+
+// Sort projects based on the order defined in projects-order.json
+const projects = projectsOrder
+  .map(slug => allProjects.find(p => p.slug === slug))
+  .filter(Boolean); // Remove any undefined entries
+---
+
+<MainLayout title="Projects | Graham Dungan" description="Portfolio of projects by Graham Dungan">
+  <div class="container mx-auto px-4 py-12">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Projects</h1>
+      <p class="text-lg mb-12 text-text/80 dark:text-text-dark/80">
+        A collection of software engineering, security, game development, and data science projects.
+      </p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((project) => (
+          <a 
+            href={`/projects/${project.slug}`}
+            class="group bg-accent dark:bg-accent-dark rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+          >
+            <div class="aspect-video overflow-hidden bg-background dark:bg-background-dark">
+              <img 
+                src={`/src/assets/${project.data.thumbnail}`}
+                alt={project.data.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="p-6">
+              <h2 class="text-xl font-bold mb-2 group-hover:opacity-80 transition-opacity">
+                {project.data.title}
+              </h2>
+              <p class="text-sm text-text/60 dark:text-text-dark/60 mb-3">
+                {project.data.date}
+              </p>
+              <p class="text-sm mb-4">
+                {project.data.summary}
+              </p>
+              {project.data.tags && (
+                <div class="flex flex-wrap gap-2">
+                  {project.data.tags.slice(0, 3).map((tag) => (
+                    <span class="text-xs px-2 py-1 bg-background dark:bg-background-dark rounded">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</MainLayout>

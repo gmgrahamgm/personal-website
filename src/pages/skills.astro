@@ -1,0 +1,97 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const courses = [
+  {
+    course: "Design and Analysis of Algorithms",
+    concepts: "Divide and Conquer, Greedy, DP, Graphs, Complexity",
+  },
+  {
+    course: "Software Security",
+    concepts: "OWASP, Web Vulnerabilities, Software Vulnerabilities, Scanners and Tools",
+  },
+  {
+    course: "Applied Cryptography",
+    concepts: "Public and Private Key Cryptography, Hashes, Block Ciphers, Quantum Computing, Post-Quantum Cryptography, Zero Knowledge Proofs",
+  },
+  {
+    course: "Foundations of Software Engineering",
+    concepts: "Waterfall, Scrum, PostgreSQL, Python, Java, React, HTML, CSS, JavaScript",
+  },
+  {
+    course: "Intro to Computer Systems",
+    concepts: "C, C++, File Descriptors, System Calls, Process API, Threading, Networks",
+  },
+  { course: "Database Systems", concepts: "MySQL, NoSQL" },
+  { course: "Program Design and Concepts", concepts: "C++" },
+  { course: "Data Structures and Algorithms", concepts: "C++, GDB" },
+  { course: "Programming Languages", concepts: "Java, Scheme" },
+];
+
+const languages = [
+  "C", "C++", "Python", "C#", "Java", "JavaScript", "HTML", "CSS"
+];
+
+const tech = [
+  "Vite", "React", "Three.js", "Django", "Flask", "FastAPI",
+  "Uvicorn", "SQLMap", "Metasploit", "Docker", "MySQL", "MongoDB"
+];
+---
+
+<MainLayout title="Skills | Graham Dungan" description="Technical skills and course history">
+  <div class="container mx-auto px-4 py-12">
+    <div class="max-w-5xl mx-auto">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Skills</h1>
+      <p class="text-lg mb-12 text-text/80 dark:text-text-dark/80">
+        A collection of concepts, languages, and technologies I have encountered and learned through personal projects and school.
+      </p>
+      
+      <!-- Courses Table -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-6">Course History</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full bg-accent dark:bg-accent-dark rounded-lg overflow-hidden">
+            <thead class="bg-text dark:bg-text-dark text-background dark:text-background-dark">
+              <tr>
+                <th class="px-6 py-4 text-left font-semibold">Course</th>
+                <th class="px-6 py-4 text-left font-semibold">Languages / Concepts</th>
+              </tr>
+            </thead>
+            <tbody>
+              {courses.map((item, idx) => (
+                <tr class={idx % 2 === 0 ? 'bg-accent dark:bg-accent-dark' : 'bg-background dark:bg-background-dark'}>
+                  <td class="px-6 py-4 font-medium">{item.course}</td>
+                  <td class="px-6 py-4 text-sm">{item.concepts}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Languages -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-6">Familiar Languages</h2>
+        <div class="flex flex-wrap gap-3">
+          {languages.map((lang) => (
+            <span class="px-4 py-2 bg-accent dark:bg-accent-dark rounded-lg text-sm font-medium">
+              {lang}
+            </span>
+          ))}
+        </div>
+      </div>
+      
+      <!-- Technologies -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-6">Frameworks & Tools</h2>
+        <div class="flex flex-wrap gap-3">
+          {tech.map((item) => (
+            <span class="px-4 py-2 bg-accent dark:bg-accent-dark rounded-lg text-sm font-medium">
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</MainLayout>
