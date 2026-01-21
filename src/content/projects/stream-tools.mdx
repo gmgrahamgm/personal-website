@@ -1,0 +1,33 @@
+---
+title: "Stream Tools"
+summary: "I created a set of tools to help streamers on both Twitch and YouTube."
+date: "July 2023 - December 2025"
+thumbnail: "project-stream/thumb_stream.png"
+tags: ["python", "c#", "c", "websockets"]
+images:
+  - "project-stream/stream_main.png"
+---
+
+After engaging with Twitch and YouTube for some time, I found both platforms lacking in tools to make streaming a seamless and efficient process.
+Existing third-party services exist like Stream Elements, but lack in autonomy and privacy.
+Plus, if Stream Elements goes down, so do many streams.
+All of these programs were made possible by Stream Elements and its API.
+
+# Multichat
+
+Multichat is a program that hosts a Uvicorn webserver which continuously polls YouTube and Twitch for chat events.
+Since YouTube does not have the same kind of IRC messaging system that Twitch does, I had to use Innertube to grab the chat messages themselves.
+This process would have been much smoother if YouTube/Google's documentation for requesting chat messages was updated.
+After chat was polled/updated, it is displayed in a webserver which can then be used on OBS.
+
+# Media Listener
+
+OBS does not have any native features to listen and display what media (e.g. music) is being played on stream.
+There exist programs like Tuna, but these are laggy and can even be inaccurate.
+I created a C# program to listen to the Windows Media player to grab the thumbnail, artist, and song title to display in OBS.
+
+# Streamer Pad
+
+Controlling streams (scenes, events, etc.) can be difficult with a single keyboard, but devices dedicated for streaming (like the Elgato Stream Deck) are expensive.
+As such, I bought a $5 18-key USB keypad and created a program to attach itself to the keyboard and to send websocket requests to StreamerBot on keypress.
+This makes controlling the stream very easy and does not interfere with existing keyboard bindings.

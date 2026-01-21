@@ -1,9 +1,10 @@
 [
-  "tldr-extension",
+  "stream-tools",
   "sql-guesser",
   "security-pocs",
-  "pandapos",
   "kavtools",
+  "tldr-extension",
+  "pandapos",
   "rummikub-solver",
   "hiki-kabu",
   "kaggle-competition",
