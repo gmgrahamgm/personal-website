@@ -1,6 +1,6 @@
 ---
 title: "SQL Guesser"
-summary: "As part of the final project in CSCE 413, Software Security at Texas A&M, my team and I created a tool that can perform a blind SQLi using binary search to access information within a vulnerable MySQL DBMS."
+summary: "As part of the final project in CSCE413 Software Security amy team and I created a tool that can perform a blind SQLi using binary search to access information within a vulnerable MySQL DBMS."
 date: "January 2025 - May 2025"
 thumbnail: "project-sqlguesser/thumb-sqlguesser.png"
 tags: ["security", "python", "sql", "cybersecurity"]
@@ -12,6 +12,22 @@ images:
   - "project-sqlguesser/sqlguesser-report.png"
 ---
 
-CSCE 413, Software Security, is a hands-on security class that covered the fundamentals of security related concepts for software development. Besides the many PoC's that we did, alongside studies of existing viruses, the final project was to find a zero-day exploit of an existing application or website.
+CSCE 413, Software Security, is a hands-on security class that covered the fundamentals of security related concepts for software development.
+Besides the many PoC's that we created, alongside studies of existing viruses, the final project was to find a zero-day exploit of an existing application or website.
 
-Our team found many rudementary stored and reflected XSS vulnerabilities across many websites via Google Dorks, however, we only found a few websites vulnerable to SQLi. Of these websites, we found one that errored when a malformed query was input. Leveraging this, we created a tool called SQL Guesser. This tool had multiple modes for guessing database, table, and column names as well as row entries. The tool would 'guess' by querying if the nth character of some database element was higher or lower than a certain ASCII value (binary search). Since the vulnerable website did not have rate limiting or really any security checks, out team was able to map out their entire database.
+## SQL Guesser
+
+Our team found many rudementary stored and reflected XSS vulnerabilities across many websites via Google Dorks, however, we only found a few websites vulnerable to SQLi.
+Of these websites, we found one that errored when a malformed query was input.
+Leveraging this, we created a tool called SQL Guesser.
+This tool had multiple modes for guessing database, table, and column names as well as row entries.
+
+## Binary Search
+
+The tool would 'guess' by querying if the nth character of some database element was higher or lower than a certain ASCII value (binary search).
+Since the vulnerable website did not have rate limiting or really any security checks, out team was able to map out their entire database and acquire sensitive information.
+After responsibly disclosing the vulnerability, the target of the attack did not respond.
+
+## Demos
+
+Demos for the SQL Guesser and a rudimentary XSS keylogger have been included below.
