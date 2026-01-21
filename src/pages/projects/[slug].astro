@@ -1,10 +1,10 @@
 ---
-import MainLayout from '../../layouts/MainLayout.astro';
-import { getCollection } from 'astro:content';
+import MainLayout from "../../layouts/MainLayout.astro";
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects');
-  return projects.map(project => ({
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({
     params: { slug: project.slug },
     props: { project },
   }));
@@ -14,115 +14,183 @@ const { project } = Astro.props;
 const { Content } = await project.render();
 ---
 
-<MainLayout title={`${project.data.title} | Graham Dungan`} description={project.data.summary}>
+<MainLayout
+  title={`${project.data.title} | Graham Dungan`}
+  description={project.data.summary}
+>
   <article class="container mx-auto px-4 py-12">
     <div class="max-w-4xl mx-auto">
       <!-- Header -->
       <div class="mb-8">
-        <a 
-          href="/projects" 
+        <a
+          href="/projects"
           class="text-sm hover:opacity-80 transition-opacity inline-flex items-center gap-2 mb-4"
         >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 19l-7-7 7-7"></path>
           </svg>
           Back to Projects
         </a>
-        
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">{project.data.title}</h1>
-        <p class="text-lg text-text/80 dark:text-text-dark/80 mb-4">{project.data.date}</p>
-        
-        {project.data.tags && (
-          <div class="flex flex-wrap gap-2 mb-6">
-            {project.data.tags.map((tag) => (
-              <span class="text-sm px-3 py-1 bg-accent dark:bg-accent-dark rounded-full">
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
+
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">
+          {project.data.title}
+        </h1>
+        <p class="text-lg text-text/80 dark:text-text-dark/80 mb-4">
+          {project.data.date}
+        </p>
+
+        {
+          project.data.tags && (
+            <div class="flex flex-wrap gap-2 mb-6">
+              {project.data.tags.map((tag) => (
+                <span class="text-sm px-3 py-1 bg-accent dark:bg-accent-dark rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )
+        }
       </div>
-      
+
       <!-- Thumbnail -->
-      {project.data.thumbnail && (
-        <div class="mb-8 rounded-lg overflow-hidden">
-          <img 
-            src={`/${project.data.thumbnail}`}
-            alt={project.data.title}
-            class="w-full"
-          />
-        </div>
-      )}
-      
+      {
+        project.data.thumbnail && (
+          <div class="mb-8 flex justify-center">
+            <div class="rounded-lg overflow-hidden max-w-md">
+              <img
+                src={`/${project.data.thumbnail}`}
+                alt={project.data.title}
+                class="w-full h-auto"
+              />
+            </div>
+          </div>
+        )
+      }
+
       <!-- Content -->
       <div class="prose prose-lg dark:prose-invert max-w-none mb-12">
         <Content />
       </div>
-      
-      <!-- Images Gallery -->
-      {project.data.images && project.data.images.length > 0 && (
-        <div class="mb-12">
-          <h2 class="text-2xl font-bold mb-6">Gallery</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {project.data.images.map((image) => (
-              <div class="rounded-lg overflow-hidden bg-accent dark:bg-accent-dark">
-                <img 
-                  src={`/${image}`}
-                  alt={`${project.data.title} screenshot`}
-                  class="w-full h-full object-cover"
+
+      <!-- Video Embeds -->
+      {
+        project.data.videos && project.data.videos.length > 0 && (
+          <div class="mb-12 space-y-6">
+            {project.data.videos.map((video, index) => (
+              <div class="aspect-video rounded-lg overflow-hidden">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src={
+                    video
+                      .replace("youtu.be/", "www.youtube.com/embed/")
+                      .replace("watch?v=", "embed/")
+                      .split("?")[0]
+                  }
+                  title={`${project.data.title} video ${index + 1}`}
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                  class="w-full h-full"
                 />
               </div>
             ))}
           </div>
-        </div>
-      )}
-      
-      <!-- Reports/Downloads -->
-      {project.data.reports && project.data.reports.length > 0 && (
-        <div class="mb-12">
-          <h2 class="text-2xl font-bold mb-6">Reports & Downloads</h2>
-          <div class="space-y-2">
-            {project.data.reports.map((report) => (
-              <a 
-                href={`/${report.url}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="block p-4 bg-accent dark:bg-accent-dark rounded-lg hover:opacity-80 transition-opacity"
-              >
-                <div class="flex items-center justify-between">
-                  <span>{report.label}</span>
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                  </svg>
+        )
+      }
+
+      <!-- Images Gallery -->
+      {
+        project.data.images && project.data.images.length > 0 && (
+          <div class="mb-12">
+            <h2 class="text-2xl font-bold mb-6">Gallery</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {project.data.images.map((image) => (
+                <div class="rounded-lg overflow-hidden bg-accent dark:bg-accent-dark">
+                  <img
+                    src={`/${image}`}
+                    alt={`${project.data.title} screenshot`}
+                    class="w-full h-full object-cover"
+                  />
                 </div>
-              </a>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      )}
-      
+        )
+      }
+
+      <!-- Reports/Downloads -->
+      {
+        project.data.reports && project.data.reports.length > 0 && (
+          <div class="mb-12">
+            <h2 class="text-2xl font-bold mb-6">Reports & Downloads</h2>
+            <div class="space-y-2">
+              {project.data.reports.map((report) => (
+                <a
+                  href={`/${report.url}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="block p-4 bg-accent dark:bg-accent-dark rounded-lg hover:opacity-80 transition-opacity"
+                >
+                  <div class="flex items-center justify-between">
+                    <span>{report.label}</span>
+                    <svg
+                      class="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
+                    </svg>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        )
+      }
+
       <!-- Links -->
       <div class="flex gap-4">
-        {project.data.github && (
-          <a 
-            href={project.data.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="px-6 py-3 bg-text dark:bg-text-dark text-background dark:text-background-dark rounded-lg hover:opacity-80 transition-opacity"
-          >
-            View on GitHub
-          </a>
-        )}
-        {project.data.live && (
-          <a 
-            href={project.data.live}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="px-6 py-3 border-2 border-text dark:border-text-dark rounded-lg hover:bg-accent dark:hover:bg-accent-dark transition-colors"
-          >
-            View Live Demo
-          </a>
-        )}
+        {
+          project.data.github && (
+            <a
+              href={project.data.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-6 py-3 bg-text dark:bg-text-dark text-background dark:text-background-dark rounded-lg hover:opacity-80 transition-opacity"
+            >
+              View on GitHub
+            </a>
+          )
+        }
+        {
+          project.data.live && (
+            <a
+              href={project.data.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-6 py-3 border-2 border-text dark:border-text-dark rounded-lg hover:bg-accent dark:hover:bg-accent-dark transition-colors"
+            >
+              View Live Demo
+            </a>
+          )
+        }
       </div>
     </div>
   </article>
@@ -132,15 +200,36 @@ const { Content } = await project.render();
   .prose {
     @apply text-text dark:text-text-dark;
   }
-  
-  .prose p {
-    @apply mb-4;
+
+  .prose :global(p) {
+    @apply mb-6;
   }
-  
+
+  .prose :global(p:last-child) {
+    @apply mb-0;
+  }
+
+  .prose :global(h2) {
+    @apply text-2xl font-bold mt-8 mb-4;
+  }
+
+  .prose :global(h3) {
+    @apply text-xl font-bold mt-6 mb-3;
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    @apply mb-6 ml-6;
+  }
+
+  .prose :global(li) {
+    @apply mb-2;
+  }
+
   .prose strong {
     @apply font-bold;
   }
-  
+
   .prose a {
     @apply text-text dark:text-text-dark underline hover:opacity-80;
   }
