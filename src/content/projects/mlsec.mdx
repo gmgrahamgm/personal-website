@@ -1,0 +1,56 @@
+---
+title: "ML Antivirus for MLSEC"
+summary: "I created a progressive LGBM DES model for classifying PE files in under 5 seconds with less than 1 GB of RAM."
+date: "December 2025"
+thumbnail: "project-mlsec/thumb_mlsec.png"
+tags: ["research", "security", "machine-learning", "python", "docker"]
+reports:
+  - label: "MLSEC Defense Report"
+    url: "reports/mlsec_defense_report.pdf"
+images:
+  - "project-mlsec/mlsec-tilted-1.png"
+  - "project-mlsec/mlsec-tilted-2.png"
+  - "project-mlsec/mlsec_pipeline.png"
+  - "project-mlsec/mlsec_tiered_featurizer.png"
+  - "project-mlsec/mlsec_speculative_predictor.png"
+---
+
+CSCE439 Data Analytics for Software Security is modeled after the MLSEC competition, taught by [Marcus Botacin](https://marcusbotacin.github.io/).
+This class was split into teams where each team creates viruses (malware samples modified to be evasive) and antiviruses (ML or DL models that classify PE binaries).
+At several points of the semester, teams would pit their viruses against other teams' antivuses.
+There were requirements for both viruses and antivurses.
+The important antivirus requirements were that they must accurately (95%) classify a binary in less than 5 seconds with less than 1 GB of RAM.
+Grades were distributed based on the performance of each team's viruses and antiviruses.
+The rest of the class was dedicated to reading and presenting state-of-the-art research papers on machine learning and security.
+I was the head of the antivirus on my team, and thus this project page describes the antivirus that I created.
+Personally, this is my favorite class that I've taken at all of A&M.
+
+## TSDES
+
+TSDES, or Tiered Speculative Dynamic Ensemble Selection was a model I created for the challenge.
+In hindsight, I wish I named it Tiered Progressive Dynamic Ensemble Selection (TPDES), as that is a more accurate descriptor of what it is doing.
+It is called DES because it is a ensemble of LGBM models with different purposes.
+
+### Tiered Featurization
+
+TSDES first featurizes a file. Given the 5s time constraint, I break files into several tiers.
+A process is spawned to featurize a file.
+If the file cannot be fully featurized in the alloted time for the featurizer (generally about 3.5s), then the most recent tier of features that was collected will be evaluated by a tier expert.
+Tier experts are models specifically trained to classify a subset of features.
+While it is generally less accurate than the main model (GEN + DES), it is much better than guessing.
+If the file is fully featurized in time, it is sent to the predictor.
+
+### Speculative Predictor
+
+Speculative is a misnomer- this is a progressive predictor.
+The predictor predicts the file with two models- a GENERALIST model and a DES model (where the GENERALIST is also inside the DES).
+The DES is slower but more accurate, while the GENERALIST is faster but less accurate.
+Two processes are spawned to predict with the GENERALIST and the DES at the same time.
+If the DES does not finish, it will use the GENERALIST's classification.
+If the DES finishes, it will use the DES's classification.
+If neither finish, the predictor will return a 0 indicating "goodware" (since it did not finish in time), per competition guidelines.
+Hence, this is called progressive because it evaluates with two models at once- this misnomer spawned from me being initially inspired by speculative branch prediction.
+
+## Paper
+
+A paper going into more detail can be found below, as I did not include specifics or reasoning in this explanation.

@@ -230,7 +230,25 @@ const { Content } = await project.render();
     @apply font-bold;
   }
 
-  .prose a {
-    @apply text-text dark:text-text-dark underline hover:opacity-80;
+  .prose :global(a) {
+    @apply underline decoration-2 underline-offset-2;
+    color: #2563eb;
+    text-decoration-color: #2563eb;
+  }
+
+  .prose :global(a):hover {
+    @apply decoration-[3px];
+    color: #1d4ed8;
+    text-decoration-color: #1d4ed8;
+  }
+
+  :global(.dark) .prose :global(a) {
+    color: #60a5fa;
+    text-decoration-color: #60a5fa;
+  }
+
+  :global(.dark) .prose :global(a):hover {
+    color: #93c5fd;
+    text-decoration-color: #93c5fd;
   }
 </style>
